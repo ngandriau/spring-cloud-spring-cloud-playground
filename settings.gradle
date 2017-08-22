@@ -1,0 +1,5 @@
+rootProject.name = 'spring-cloud-playground'
+
+include 'common'
+include 'book'
+include 'gateway'

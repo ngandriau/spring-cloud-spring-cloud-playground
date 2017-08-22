@@ -1,0 +1,33 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.6.RELEASE'
+	}
+}
+
+task wrapper(type: Wrapper) {
+	gradleVersion = '4.1'
+}
+
+allprojects {
+	apply plugin: 'java'
+	apply plugin: 'idea'
+	apply plugin: 'groovy'
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+
+	ext {
+		spockVersion = "1.1-groovy-2.4-rc-2"
+		springCloudVersion = "Dalston.SR3"
+		groovyVersion = "2.4.12"
+	}
+
+	repositories { mavenCentral() }
+
+	dependencies {
+		compile "org.codehaus.groovy:groovy-all:$groovyVersion"
+		compile 'org.apache.ivy:ivy:2.4.0'
+		compile 'ch.qos.logback:logback-classic:1.2.3'
+
+		testCompile "org.spockframework:spock-spring:$spockVersion"
+	}
+}
