@@ -15,7 +15,8 @@
     
 direct access:    				http://localhost:8090/available
 access through gateway: 		http://localhost:8080/books/available
-- correlation id is set as the header: `tmx-correlation-id` of the request forwarded from `gateway` to `book`
+- correlation id is set as the header: `tmx-correlation-id` of the request forwarded from `gateway` to `book`: `RequestFilter`
+- it is also added in the header of the response by the `gateway`: `ResponseFilter`
 
 
   

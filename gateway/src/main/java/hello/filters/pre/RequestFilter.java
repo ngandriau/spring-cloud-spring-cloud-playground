@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import static hello.filters.utils.FilterUtils.PRE_FILTER_TYPE;
 
-public class SimpleFilter extends ZuulFilter {
+public class RequestFilter extends ZuulFilter {
 
-	private static Logger log = LoggerFactory.getLogger(SimpleFilter.class);
+	private static Logger log = LoggerFactory.getLogger(RequestFilter.class);
 
 	@Autowired
 	FilterUtils filterUtils;
@@ -52,7 +52,7 @@ public class SimpleFilter extends ZuulFilter {
 		RequestContext ctx = RequestContext.getCurrentContext();
 		HttpServletRequest request = ctx.getRequest();
 
-		log.info(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
+		log.debug(String.format("%s request to %s", request.getMethod(), request.getRequestURL().toString()));
 
 
 		if (isCorrelationIdPresent()) {

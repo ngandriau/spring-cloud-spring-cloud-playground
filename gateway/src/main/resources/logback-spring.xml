@@ -2,6 +2,6 @@
 <configuration debug="true" scan="true" scanPeriod="10 seconds">
 	<include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-	<logger name="hello.filters.pre.SimpleFilter" level="DEBUG" />
+	<logger name="hello.filters" level="DEBUG" />
 
 </configuration>
