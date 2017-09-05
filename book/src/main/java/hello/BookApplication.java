@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.sleuth.Sampler;
+import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
+import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +20,7 @@ public class BookApplication {
   private static final Logger log = LoggerFactory.getLogger(BookApplication.class);
 
   private @Autowired
-  HttpServletRequest request;
+    HttpServletRequest request;
 
   private @Autowired
   BookServiceImpl bookService;
@@ -40,4 +43,8 @@ public class BookApplication {
   public static void main(String[] args) {
     SpringApplication.run(BookApplication.class, args);
   }
+
+  /**Send every transaction info to zipking*/
+  @Bean
+  public Sampler defaultSampler() { return new AlwaysSampler();}
 }
